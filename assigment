@@ -1,1 +1,590 @@
+1.
+import java.util.Scanner;
+class RotateRight {    
+ public static void main(String[] args) {    
+        int [] arr = new int [7];
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" enter " +  arr.length  + " values ");
+        for (int i =0 ;i<arr.length;i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        int n = 5;    
+           
+        System.out.println("Original array is : ");    
+        for (int i = 0; i < arr.length; i++) {     
+            System.out.print(arr[i] + " ");     
+        }      
+            
+        for(int i = 0; i < n; i++){    
+            int j, last;    
+            //Stores the last element of array    
+            last = arr[arr.length-1];    
+            
+            for(j = arr.length-1; j > 0; j--){    
+                //Shift element of array by one    
+                arr[j] = arr[j-1];    
+            }    
+            arr[0] = last;    
+        }    
+        
+        System.out.println();    
+            
+        System.out.println("Array after right rotation: ");    
+        for(int i = 0; i< arr.length; i++){    
+            System.out.print(arr[i] + " ");    
+        }    
+    }    
+}    
+2.
+
+public class small 
+{  
+public void sortArr(int arr[])  
+{  
+int size = arr.length;  
+  
+for(int i = 0; i < size; i++)  
+{  
+int temp = i;  
+for(int j = i + 1; j < size; j++)  
+{  
+if(arr[temp] > arr[j])  
+{  
+temp = j;  
+}  
+}  
+  
+  
+if(temp != i)  
+{  
+int t = arr[i];  
+arr[i] = arr[temp];  
+arr[temp] = t;   
+}  
+}  
+}  
+  public int findsmall(int arr[], int k)  
+{  
+sortArr(arr);  
+return arr[k - 1];  
+}  
+
+public static void main(String argvs[])  
+{  
+  
+small ob = new small();  
+
+  
+int arr[] = {1,2,3,4,5,6,7};  
+
+  
+int size = arr.length;  
+int k = 4;  
+  
+System.out.println("Given  array is : ");  
+for(int i = 0; i < size; i++)  
+{  
+System.out.print(arr[i] + " ");  
+}  
+  
+int ele = ob.findsmall(arr, k);  
+  
+System.out.println();  
+System.out.println("The " + k + "rd smallest element of the array is: " + ele);  
+  
+System.out.println("\n");  
+  
+} 
+}
+3.
+import java.util.Scanner;
+
+public class sumof {
+
+	public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+		
+        int array[] = { 3, 7, 2, 5, 8, 9 }; 
+        int n = array.length; 
+
+		System.out.print("Enter the value of L: ");
+		int L = sc.nextInt();
+
+		System.out.print("Enter the value of R: ");
+		int R = sc.nextInt();
+
+		if (L < 0 || R >= n || L > R) {
+			System.out.println("Invalid range!");
+		} else {
+			int sum = 0;
+			for (int i = L; i <= R; i++) {
+				sum += array[i];
+			}
+			System.out.println("Sum of elements in the range [" + L + ", " + R + "] is: " + sum);
+		}
+
+
+	}
+}
+
+4.
+public class p4 {
+
+	public static void main(String[] args) {
+		int a[][]={{1,2,3},{3,2,1},{2,2,2}};    
+		int b[][]={{1,2,3},{3,2,1},{2,2,2}};    
+		    
+		int c[][]=new int[3][3];    
+		    
+		
+		for(int i=0;i<3;i++){    
+		for(int j=0;j<3;j++){    
+		c[i][j]=0;      
+		for(int k=0;k<3;k++)      
+		{      
+		c[i][j]+=a[i][k]*b[k][j];      
+		}  
+		System.out.print(c[i][j]+" ");    
+		}
+		System.out.println();
+		}
+
+	}
+
+}
+5.
+
+public class p5 {
+	
+	
+	public static void main(String[] args) {
+		LinkedList MyList = new LinkedList();
+
+		
+		MyList.push_back(1);
+		MyList.push_back(2);
+		MyList.push_back(3);
+		MyList.push_back(4);
+		MyList.push_back(5);
+		MyList.push_back(6);
+		MyList.push_back(7);
+		MyList.push_back(8);
+		System.out.println("Entered values in list are:");
+		MyList.PrintList();
+
+		
+		
+		MyList.pop_first(1);
+		System.out.println("After deleting first  values from list:");
+		MyList.PrintList();  
+		MyList.pop_first(4);
+		System.out.println("After deleting 4 from list  values left are:");
+		MyList.PrintList();  
+            MyList.pop_first(10);
+		System.out.println("After deleting 10 from list  values left are:");
+		MyList.PrintList();  
+		
+	}
+
+}
+
+
+
+class Node {
+	int data;
+	Node next;
+};
+
+class LinkedList {
+	Node head;
+
+	LinkedList(){
+		head = null;
+	}
+
+	
+	void push_back(int newElement) {
+		Node newNode = new Node(); 
+		newNode.data = newElement;
+		newNode.next = null;
+		if(head == null) {
+			head = newNode;
+		} else {
+			Node temp = new Node();
+			temp = head;
+			while(temp.next != null)
+				temp = temp.next;
+                        temp.next = newNode;
+		}    
+	}
+
+	//Delete first node by key
+	void pop_first(int key) {     
+		Node temp = head;
+		if(temp != null) {
+			if(temp.data == key) {
+				Node nodeToDelete = head;
+				head = head.next;
+				nodeToDelete = null;
+			} else {
+				while(temp.next != null) {
+					if(temp.next.data == key) {
+						Node nodeToDelete = temp.next;
+						temp.next = temp.next.next;
+						nodeToDelete = null;
+						break; 
+					}
+					temp = temp.next;
+				}
+			}
+		}
+	} 
+
+	
+	void PrintList() {
+		Node temp = new Node();
+		temp = this.head;
+		if(temp != null) {
+			System.out.print("The list contains: ");
+            while(temp != null) {
+				System.out.print(temp.data + " ");
+				temp = temp.next;
+			}
+			System.out.println();
+		} else {
+			System.out.println("The list is empty.");
+		}
+	}    
+}
+
+6.
+
+public class p6 {
+	
+		public class Node{  
+			int data;  
+			Node next;  
+			public Node(int data) {  
+				this.data = data;  
+			}  
+		}  
+		public Node head = null;  
+		public Node tail = null;  
+		public void add(int data){  
+			Node newNode = new Node(data);  
+			if(head == null) {  
+				head = newNode;  
+				tail = newNode;  
+				newNode.next = head;  
+			}  
+			else {  
+				tail.next = newNode;  
+				tail = newNode;  
+				tail.next = head;  
+			}  
+		}  
+		public void sortList() {  
+			Node current = head, index = null;  
+			int temp;  
+			if(head == null) {  
+				System.out.println("List is empty");  
+			}  
+			else {  
+				do{  
+					index = current.next;  
+					while(index != head) {  
+						if(current.data > index.data) {  
+							temp =current.data;  
+							current.data= index.data;  
+							index.data = temp;  
+						}  
+						index= index.next;  
+					}  
+					current =current.next;  
+				}while(current.next != head);   
+			}  
+		}  
+		public void display() {  
+			Node current = head;  
+			if(head == null) {  
+				System.out.println("List is empty");  
+			}  
+			else {  
+				do{  
+					System.out.print(" "+ current.data);  
+					current = current.next;  
+				}while(current != head);  
+				System.out.println();  
+			}  
+		}  
+
+	
+	public static void main(String[] args) {
+		p6 cl = new p6();  
+		cl.add(70);  
+		cl.add(90);  
+		cl.add(20);  
+		cl.add(100);  
+		cl.add(50);  
+		System.out.println("Original list: ");  
+		cl.display();  
+		cl.sortList();  
+		System.out.println("Sorted Circular linked list: ");  
+		cl.display();  
+		
+	}
+
+}
+7.
+package practiceass3;
+
+public class p7 {
+	
+		class Node{  
+			int data;  
+			Node previous;  
+			Node next;  
+
+			public Node(int data) {  
+				this.data = data;  
+			}  
+		}  
+
+		Node head, tail = null;  
+
+		public void addNode(int data) {  
+			Node newNode = new Node(data);  
+
+			if(head == null) {  
+				head = tail = newNode;  
+				head.previous = null;  
+				tail.next = null;  
+			}  
+			else {  
+				tail.next = newNode;  
+				newNode.previous = tail;  
+				tail = newNode;  
+				tail.next = null;  
+			}  
+		}  
+
+		public void reverse() {  
+			Node current = head, temp = null;  
+
+			while(current != null) {  
+				temp = current.next;  
+				current.next = current.previous;  
+				current.previous = temp;  
+				current = current.previous;  
+			}  
+			//Swap the head and tail pointers.  
+			temp = head;  
+			head = tail;  
+			tail = temp;  
+		}  
+
+		//display() will print out the elements of the list  
+		public void display() {  
+			
+			Node current = head;  
+			if(head == null) {  
+				System.out.println("List is empty");  
+				return;  
+			}  
+
+			while(current != null) {  
+				//Prints each node by incrementing the pointer.  
+
+				System.out.print(current.data + " ");  
+				current = current.next;  
+			}  
+		}  
+
+	public static void main(String[] args) {
+		p7 dList = new p7();  
+		dList.addNode(1);  
+		dList.addNode(7);  
+		dList.addNode(8);  
+		dList.addNode(6);  
+		dList.addNode(4);  
+
+		System.out.println("Traversal in Forward Direction: ");  
+		dList.display();  
+
+		 
+		dList.reverse();  
+
+		 
+		System.out.println("\nTraversal in Reversed List: ");  
+		dList.display();  
+
+	}
+
+}
+
+8.
+package practiceass3;
+
+
+class p8 {
+	private static final int MAX_SIZE = 3;
+	private int[] stackArray;
+	private int top;
+
+	public p8() {
+		stackArray = new int[MAX_SIZE];
+		top = -1;
+	}
+
+	public boolean isEmpty() {
+		return (top == -1);
+	}
+
+	public boolean isFull() {
+		return (top == MAX_SIZE - 1);
+	}
+
+	public void push(int data) {
+		if (isFull()) {
+			System.out.println("Stack overflow! Cannot push " + data + " into the stack.");
+		} else {
+			stackArray[++top] = data;
+			System.out.println(data + " pushed into the stack.");
+		}
+	}
+
+	public int pop() {
+		if (isEmpty()) {
+			System.out.println("Stack underflow! Cannot pop element from the stack.");
+			return -1;
+		} else {
+			int poppedElement = stackArray[top--];
+			System.out.println(poppedElement + " popped from the stack.");
+			return poppedElement;
+		}
+	}
+
+
+	public static void main(String[] args) {
+		p8 stack = new p8();
+		
+		stack.push(10);
+		stack.push(20);
+		stack.push(30);
+		stack.push(40);
+		
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		
+
+	}
+
+}
+
+9.
+
+class Queue {   
+      
+    private static int front, rear, capacity;   
+    private static int queue[];   
+     
+    Queue(int size) {   
+        front = rear = 0;   
+        capacity = size;   
+        queue = new int[capacity];   
+    }   
+     
+    static void queueEnqueue(int item)  {   
+        if (capacity == rear) {   
+            System.out.printf("\nQueue is full\n");   
+            return;   
+        }   
+     
+        else {   
+            queue[rear] = item;   
+            rear++;   
+        }   
+        return;   
+    }   
+     
+    static void queueDequeue()  {   
+        if (front == rear) {   
+            System.out.printf("\nQueue is empty\n");   
+            return;   
+        }   
+     
+        else {   
+            for (int i = 0; i < rear - 1; i++) {   
+                queue[i] = queue[i + 1];   
+            }   
+     
+         
+            if (rear < capacity)   
+                queue[rear] = 0;   
+     
+            rear--;   
+        }   
+        return;   
+    }   
+     
+     
+    static void queueDisplay()   
+    {   
+        int i;   
+        if (front == rear) {   
+            System.out.printf("Queue is Empty\n");   
+            return;   
+        }   
+     
+        for (i = front; i < rear; i++) {   
+            System.out.printf(" %d , ", queue[i]);   
+        }   
+        return;   
+    }   
+     
+    static void queueFront()   
+    {   
+        if (front == rear) {   
+            System.out.printf("Queue is Empty\n");   
+            return;   
+        }   
+        System.out.printf("\nFront Element of the queue: %d", queue[front]);   
+        return;   
+    }   
+}   
+   
+public class QueueArrayImplementation {  
+    public static void main(String[] args) {   
+        Queue q = new Queue(4);   
+     
+        System.out.println("Initial Queue:");  
+        q.queueDisplay();   
+     
+        q.queueEnqueue(10);   
+        q.queueEnqueue(30);   
+        q.queueEnqueue(50);   
+        q.queueEnqueue(70);   
+     
+        System.out.println("Queue after Enqueue Operation:");  
+        q.queueDisplay();   
+     
+        q.queueFront();   
+           
+        q.queueEnqueue(90);   
+     
+        q.queueDisplay();   
+     
+        q.queueDequeue();   
+        q.queueDequeue();   
+        System.out.printf("\nQueue after two dequeue operations:");   
+     
+        q.queueDisplay();   
+     
+        q.queueFront();   
+    }   
+}  
+
 
